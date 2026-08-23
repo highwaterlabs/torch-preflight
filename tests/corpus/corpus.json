@@ -1,0 +1,85 @@
+{
+ "_comment": "Pinned corpus for tests/corpus/scan.py. SHAs matter: without them a diff cannot distinguish 'our rules changed' from 'their code changed'. Bump one deliberately, and re-baseline in the same commit.",
+ "repos": [
+  {
+   "name": "pytorch-examples",
+   "url": "https://github.com/pytorch/examples.git",
+   "sha": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+   "expect_files": 93
+  },
+  {
+   "name": "pytorch-tutorials",
+   "url": "https://github.com/pytorch/tutorials.git",
+   "sha": "4d66ab3f9226b7e712b725f9cf0f03fe5b0f1531",
+   "expect_files": 157
+  },
+  {
+   "name": "torchtune",
+   "url": "https://github.com/pytorch/torchtune.git",
+   "sha": "bd2a0fc7c31430972728494fa01aaeeb0ebf1ba1",
+   "expect_files": 498
+  },
+  {
+   "name": "litgpt",
+   "url": "https://github.com/Lightning-AI/litgpt.git",
+   "sha": "7bf2960dfb26bae8e815c9a16a22732974824ac1",
+   "expect_files": 137
+  },
+  {
+   "name": "trl",
+   "url": "https://github.com/huggingface/trl.git",
+   "sha": "6d484baed4db18c2799b9d5b32c2520cba6b4df2",
+   "expect_files": 375
+  },
+  {
+   "name": "llama-factory",
+   "url": "https://github.com/hiyouga/LLaMA-Factory.git",
+   "sha": "c4e09c7cbe18844816af9e18a97fe465515edbcd",
+   "expect_files": 311
+  },
+  {
+   "name": "transformers-examples",
+   "url": "https://github.com/huggingface/transformers.git",
+   "sha": "d56c55bf564ddb176759eb6ec199442682564916",
+   "sparse": "examples/pytorch",
+   "scan": "examples/pytorch",
+   "expect_files": 55
+  },
+  {
+   "name": "nanogpt",
+   "url": "https://github.com/karpathy/nanoGPT.git",
+   "sha": "3adf61e154c3fe3fca428ad6bc3818b27a3b8291",
+   "expect_files": 15
+  },
+  {
+   "name": "mingpt",
+   "url": "https://github.com/karpathy/minGPT.git",
+   "sha": "37baab71b9abea1b76ab957409a1cc2fbfba8a26",
+   "expect_files": 9
+  },
+  {
+   "name": "composer",
+   "url": "https://github.com/mosaicml/composer.git",
+   "sha": "6405188805a0054b4551ec49e4919c54c971d0e8",
+   "expect_files": 392
+  },
+  {
+   "name": "peft",
+   "url": "https://github.com/huggingface/peft.git",
+   "sha": "1f23250c929b0190e611322383bc86f6c9e730a6",
+   "expect_files": 437
+  },
+  {
+   "name": "openrlhf",
+   "url": "https://github.com/OpenRLHF/OpenRLHF.git",
+   "sha": "3c3be6234e0cb353e76bb8019947db9dfe99fca7",
+   "expect_files": 65
+  },
+  {
+   "name": "axolotl",
+   "url": "https://github.com/axolotl-ai-cloud/axolotl.git",
+   "sha": "e198b1d8ed1d36b8d732f67cbb1dda62f86d3986",
+   "expect_files": 911
+  }
+ ]
+}

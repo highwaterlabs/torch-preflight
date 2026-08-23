@@ -1,0 +1,3714 @@
+{
+ "_comment": "Written by scan.py --update-baseline. Re-baseline in the same commit as the rule change that moved it.",
+ "findings": {
+  "axolotl": [
+   [
+    "TG001",
+    "tests/e2e/kernels/test_lora.py",
+    618,
+    "`args += ...` keeps a tensor attached to the autograd graph "
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/base.py",
+    334,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/base.py",
+    334,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/base.py",
+    372,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/base.py",
+    372,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/grpo/async_trainer.py",
+    899,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/grpo/async_trainer.py",
+    899,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/grpo/trainer.py",
+    246,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/axolotl/core/trainers/grpo/trainer.py",
+    246,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "src/axolotl/utils/trainer.py",
+    490,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/axolotl/utils/trainer.py",
+    490,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "tests/e2e/integrations/test_sonicmoe.py",
+    104,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/e2e/integrations/test_sonicmoe_lora.py",
+    105,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/e2e/kernels/test_lora_features.py",
+    731,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/e2e/kernels/test_lora_mlp_geglu_moe_correctness.py",
+    52,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/e2e/kernels/test_swiglu.py",
+    37,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/integrations/kernels/scattermoe_lora/test_ep_sentinel_skip.py",
+    85,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/integrations/kernels/scattermoe_lora/test_gptoss_layout.py",
+    96,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/integrations/test_gemma4_moe.py",
+    397,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/integrations/test_sonicmoe.py",
+    177,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/integrations/test_sonicmoe_lora.py",
+    237,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/monkeypatch/test_checkpoint_activation_offload.py",
+    26,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/monkeypatch/test_qwen3_fused_attn_robustness.py",
+    146,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/utils/lora/test_freeze_lora.py",
+    234,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/utils/lora/test_modules_to_save_kwargs.py",
+    72,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/utils/schemas/validation/test_moe_quant.py",
+    274,
+    "This training run draws from torch with no seed set, so it c"
+   ]
+  ],
+  "composer": [
+   [
+    "TG004",
+    "examples/gyro_dropout_example.py",
+    75,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/gyro_dropout_example.py",
+    75,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/gyro_dropout_example.py",
+    93,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/gyro_dropout_example.py",
+    93,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    22,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    22,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    36,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    36,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    65,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_memory_monitor.py",
+    65,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_mlperf_callback.py",
+    149,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_mlperf_callback.py",
+    149,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_mlperf_callback.py",
+    154,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_mlperf_callback.py",
+    154,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    23,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    23,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    52,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    52,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    76,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/callbacks/test_oom_observer.py",
+    76,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/checkpoint/test_load.py",
+    433,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/checkpoint/test_load.py",
+    433,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    418,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    418,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    436,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    436,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    454,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    454,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    464,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    464,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    488,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/common/datasets.py",
+    488,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/fixtures/fixtures.py",
+    51,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/fixtures/fixtures.py",
+    51,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/fixtures/fixtures.py",
+    87,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/fixtures/fixtures.py",
+    87,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    634,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    634,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    635,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    635,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    669,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    669,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    670,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_mlflow_logger.py",
+    670,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_neptune_logger.py",
+    64,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_neptune_logger.py",
+    64,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_neptune_logger.py",
+    65,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_neptune_logger.py",
+    65,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_progress_bar_logger.py",
+    66,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_progress_bar_logger.py",
+    66,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_progress_bar_logger.py",
+    71,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/loggers/test_progress_bar_logger.py",
+    71,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    121,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    121,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    122,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    122,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    123,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    123,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    405,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    405,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    529,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    529,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    538,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/models/test_hf_model.py",
+    538,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/optim/test_scheduler.py",
+    349,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/optim/test_scheduler.py",
+    349,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    37,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    37,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    45,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    45,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    55,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_events.py",
+    55,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    45,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    45,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    51,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    51,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    100,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    100,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    105,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_full_nlp.py",
+    105,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_precision.py",
+    26,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_precision.py",
+    26,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/test_precision.py",
+    32,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_precision.py",
+    32,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    43,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    43,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    44,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    44,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    45,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    45,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    95,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    95,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    101,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    101,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    107,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    107,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    158,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    158,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    248,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_simple_nlp.py",
+    248,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_state.py",
+    28,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_state.py",
+    28,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_state.py",
+    76,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_state.py",
+    76,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    458,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    458,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    518,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    518,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    541,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    541,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    597,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    597,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    673,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    673,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    746,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    746,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    751,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    751,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1445,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1445,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1450,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1450,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1466,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1466,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1471,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1471,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1777,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_checkpoint.py",
+    1777,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp.py",
+    127,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp.py",
+    127,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp.py",
+    150,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp.py",
+    150,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp_sync_strategy.py",
+    83,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_ddp_sync_strategy.py",
+    83,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    57,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    57,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    124,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    124,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    165,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    165,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    187,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    187,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    259,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    259,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    310,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    310,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    338,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    338,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    371,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp.py",
+    371,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp2.py",
+    55,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp2.py",
+    55,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_checkpoint.py",
+    116,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_checkpoint.py",
+    116,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    27,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    27,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    68,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    68,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    141,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_fsdp_param_groups.py",
+    141,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    59,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    59,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    69,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    69,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    85,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    85,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    119,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_predict.py",
+    119,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    53,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    53,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    323,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    323,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    365,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    365,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    405,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_tp.py",
+    405,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    104,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    104,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    123,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    123,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    124,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    124,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    141,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    141,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    157,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    157,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    166,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    166,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    175,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    175,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    187,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    187,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    201,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    201,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    231,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    231,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    263,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    263,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    272,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    272,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    378,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    378,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    409,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    409,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    898,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    962,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    962,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1285,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1285,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1291,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1291,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1338,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1338,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1344,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1344,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1512,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1512,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1596,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1596,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1602,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1602,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1683,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/trainer/test_trainer.py",
+    1683,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    297,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    297,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    362,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    362,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    405,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    405,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    449,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/utils/test_inference.py",
+    449,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG005",
+    "composer/loss/loss.py",
+    109,
+    "`input` (output of `softmax`) is passed to `CrossEntropyLoss"
+   ],
+   [
+    "TG005",
+    "tests/algorithms/test_gradient_clipping.py",
+    26,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/algorithms/test_gradient_clipping.py",
+    51,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    84,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    229,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    272,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    317,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    398,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "tests/common/models.py",
+    664,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG006",
+    "composer/loss/loss.py",
+    60,
+    "`input` (output of `sigmoid`) is passed to `BCEWithLogitsLos"
+   ],
+   [
+    "TG008",
+    "tests/algorithms/test_gradient_clipping.py",
+    24,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/checkpoint/helpers.py",
+    179,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/trainer/test_fsdp.py",
+    471,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/trainer/test_fsdp2_gradscaler.py",
+    53,
+    "This training run draws from torch with no seed set, so it c"
+   ]
+  ],
+  "litgpt": [
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    27,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    27,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    53,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    53,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    97,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_pretrain.py",
+    97,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ]
+  ],
+  "llama-factory": [
+   [
+    "TG004",
+    "src/llamafactory/train/hyper_parallel/trainer.py",
+    305,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "src/llamafactory/train/hyper_parallel/trainer.py",
+    305,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG013",
+    "src/llamafactory/train/dpo/trainer.py",
+    335,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "src/llamafactory/train/kto/trainer.py",
+    287,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ]
+  ],
+  "mingpt": [],
+  "nanogpt": [
+   [
+    "TG007",
+    "bench.py",
+    112,
+    "`torch.cuda.synchronize()` runs inside the training loop, dr"
+   ]
+  ],
+  "openrlhf": [
+   [
+    "TG004",
+    "openrlhf/trainer/ray/ppo_actor.py",
+    165,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "openrlhf/trainer/ray/ppo_critic.py",
+    75,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG013",
+    "openrlhf/trainer/rm_trainer.py",
+    271,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ]
+  ],
+  "peft": [
+   [
+    "TG001",
+    "tests/test_decoder_models.py",
+    1252,
+    "`losses.append(...)` keeps a graph-attached tensor whose bac"
+   ],
+   [
+    "TG003",
+    "examples/pvera/confidence_interval_generation.py",
+    35,
+    "`.backward()` runs in this loop but nothing calls `zero_grad"
+   ],
+   [
+    "TG003",
+    "tests/test_other.py",
+    442,
+    "`.backward()` runs in this loop but nothing calls `zero_grad"
+   ],
+   [
+    "TG004",
+    "examples/KappaTune/experiments_kappatune_peft.py",
+    54,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/KappaTune/experiments_kappatune_peft.py",
+    54,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/beft_finetuning/beft_finetuning.py",
+    60,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/beft_finetuning/beft_finetuning.py",
+    63,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/boft_controlnet/train_controlnet.py",
+    298,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/boft_dreambooth/train_dreambooth.py",
+    160,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/boft_dreambooth/train_dreambooth.py",
+    160,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/boft_dreambooth/train_dreambooth.py",
+    334,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/causal_language_modeling/peft_lora_clm_accelerate_ds_zero3_offload.py",
+    210,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/causal_language_modeling/peft_lora_clm_accelerate_ds_zero3_offload.py",
+    213,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/causal_language_modeling/peft_lora_clm_accelerate_ds_zero3_offload.py",
+    216,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_adalora_seq2seq.py",
+    91,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_adalora_seq2seq.py",
+    94,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_lora_seq2seq_accelerate_ds_zero3_offload.py",
+    169,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_lora_seq2seq_accelerate_ds_zero3_offload.py",
+    172,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_lora_seq2seq_accelerate_ds_zero3_offload.py",
+    173,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_lora_seq2seq_accelerate_fsdp.py",
+    67,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/conditional_generation/peft_lora_seq2seq_accelerate_fsdp.py",
+    70,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/deft_dreambooth/train_dreambooth.py",
+    655,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/deft_dreambooth/train_dreambooth.py",
+    655,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/deft_dreambooth/train_dreambooth.py",
+    813,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/eva_finetuning/eva_finetuning.py",
+    59,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/eva_finetuning/eva_finetuning.py",
+    59,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/eva_finetuning/eva_finetuning_multi_accelerator.py",
+    83,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/eva_finetuning/eva_finetuning_multi_accelerator.py",
+    83,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/feature_extraction/peft_lora_embedding_semantic_search.py",
+    311,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/feature_extraction/peft_lora_embedding_semantic_search.py",
+    319,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/hra_dreambooth/train_dreambooth.py",
+    162,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/hra_dreambooth/train_dreambooth.py",
+    162,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/hra_dreambooth/train_dreambooth.py",
+    332,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/int8_training/fine_tune_blip2_int8.py",
+    77,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/int8_training/fine_tune_blip2_int8.py",
+    77,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/loftq_finetuning/train_gsm8k_llama.py",
+    569,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/loftq_finetuning/train_gsm8k_llama.py",
+    569,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/loftq_finetuning/train_gsm8k_llama.py",
+    572,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/loftq_finetuning/train_gsm8k_llama.py",
+    572,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/lora_dreambooth/train_dreambooth.py",
+    650,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/lora_dreambooth/train_dreambooth.py",
+    650,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/lora_dreambooth/train_dreambooth.py",
+    806,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/lora_ga_finetuning/lora_ga_finetuning.py",
+    168,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/lora_ga_finetuning/lora_ga_finetuning.py",
+    168,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/oft_dreambooth/train_dreambooth.py",
+    660,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/oft_dreambooth/train_dreambooth.py",
+    660,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/oft_dreambooth/train_dreambooth.py",
+    820,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/pvera/confidence_interval_generation.py",
+    30,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/pvera/confidence_interval_generation.py",
+    30,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/sequence_classification/peft_no_lora_accelerate.py",
+    139,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/sequence_classification/peft_no_lora_accelerate.py",
+    139,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/sequence_classification/peft_no_lora_accelerate.py",
+    142,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/sequence_classification/peft_no_lora_accelerate.py",
+    142,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/stable_diffusion/train_dreambooth.py",
+    824,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "examples/stable_diffusion/train_dreambooth.py",
+    824,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "examples/stable_diffusion/train_dreambooth.py",
+    968,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_gpu_examples.py",
+    5363,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "tests/test_gpu_examples.py",
+    5363,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG005",
+    "examples/pvera/confidence_interval_generation.py",
+    25,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG005",
+    "examples/pvera/confidence_interval_generation.py",
+    54,
+    "Model ends with `nn.Softmax(...)` but `nn.CrossEntropyLoss` "
+   ],
+   [
+    "TG008",
+    "tests/test_adamss_asa.py",
+    53,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/test_arrow.py",
+    451,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/test_lora_megatron.py",
+    157,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "tests/test_loraplus.py",
+    89,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG013",
+    "examples/dora_finetuning/dora-caching.py",
+    56,
+    "`torch.randint(...)` is built on the host inside this loop a"
+   ],
+   [
+    "TG013",
+    "src/peft/tuners/lora/corda.py",
+    277,
+    "`torch.ones(...)` is built on the host inside this loop and "
+   ],
+   [
+    "TG013",
+    "src/peft/tuners/trainable_tokens/layer.py",
+    195,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "src/peft/tuners/trainable_tokens/layer.py",
+    213,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "src/peft/tuners/trainable_tokens/layer.py",
+    221,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "tests/test_custom_models.py",
+    3051,
+    "`torch.arange(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "tests/test_custom_models.py",
+    3141,
+    "`torch.arange(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "tests/test_gpu_examples.py",
+    5626,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ],
+   [
+    "TG013",
+    "tests/test_lorafa.py",
+    289,
+    "`torch.randint(...)` is built on the host inside this loop a"
+   ],
+   [
+    "TG013",
+    "tests/test_lorafa.py",
+    291,
+    "`torch.randint(...)` is built on the host inside this loop a"
+   ]
+  ],
+  "pytorch-examples": [
+   [
+    "TG002",
+    "language_translation/main.py",
+    173,
+    "`validate()` runs a forward pass with autograd enabled but n"
+   ],
+   [
+    "TG003",
+    "distributed/tensor_parallelism/fsdp_tp_example.py",
+    171,
+    "`.backward()` runs in this loop but nothing calls `zero_grad"
+   ],
+   [
+    "TG003",
+    "distributed/tensor_parallelism/sequence_parallel_example.py",
+    106,
+    "`.backward()` runs in this loop but nothing calls `zero_grad"
+   ],
+   [
+    "TG003",
+    "distributed/tensor_parallelism/tensor_parallel_example.py",
+    120,
+    "`.backward()` runs in this loop but nothing calls `zero_grad"
+   ],
+   [
+    "TG004",
+    "dcgan/main.py",
+    107,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "distributed/FSDP/T5_training.py",
+    109,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "distributed/FSDP/T5_training.py",
+    109,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/FSDP/T5_training.py",
+    110,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "distributed/FSDP/T5_training.py",
+    110,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/ddp-tutorial-series/multigpu.py",
+    77,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/ddp-tutorial-series/multigpu_torchrun.py",
+    85,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/ddp-tutorial-series/multinode.py",
+    86,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/rpc/parameter_server/rpc_parameter_server.py",
+    286,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "distributed/rpc/parameter_server/rpc_parameter_server.py",
+    286,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "distributed/rpc/parameter_server/rpc_parameter_server.py",
+    293,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "distributed/rpc/parameter_server/rpc_parameter_server.py",
+    293,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "fast_neural_style/neural_style/neural_style.py",
+    49,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "fast_neural_style/neural_style/neural_style.py",
+    49,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language_translation/src/data.py",
+    93,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language_translation/src/data.py",
+    93,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language_translation/src/data.py",
+    94,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language_translation/src/data.py",
+    94,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist/main.py",
+    124,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist/main.py",
+    124,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist/main.py",
+    125,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist/main.py",
+    125,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_forward_forward/main.py",
+    156,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_forward_forward/main.py",
+    156,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_forward_forward/main.py",
+    159,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_forward_forward/main.py",
+    159,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_hogwild/train.py",
+    10,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_hogwild/train.py",
+    10,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_hogwild/train.py",
+    20,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_hogwild/train.py",
+    20,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_rnn/main.py",
+    114,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_rnn/main.py",
+    114,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "mnist_rnn/main.py",
+    121,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "mnist_rnn/main.py",
+    121,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "siamese_network/main.py",
+    285,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "siamese_network/main.py",
+    285,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "siamese_network/main.py",
+    286,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "siamese_network/main.py",
+    286,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "super_resolution/main.py",
+    37,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "super_resolution/main.py",
+    38,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "vae/main.py",
+    37,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "vae/main.py",
+    37,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "vae/main.py",
+    41,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "vae/main.py",
+    41,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "distributed/ddp/example.py",
+    45,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "distributed/rpc/pipeline/main.py",
+    233,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "distributed/rpc/rnn/main.py",
+    26,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "distributed/tensor_parallelism/sequence_parallel_example.py",
+    104,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "regression/main.py",
+    9,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG013",
+    "vae/main.py",
+    136,
+    "`torch.randn(...)` is built on the host inside this loop and"
+   ]
+  ],
+  "pytorch-tutorials": [
+   [
+    "TG001",
+    "beginner_source/chatbot_tutorial.py",
+    1061,
+    "`print_loss += ...` keeps a tensor attached to the autograd "
+   ],
+   [
+    "TG002",
+    "beginner_source/chatbot_tutorial.py",
+    1196,
+    "`evaluate()` runs a forward pass with autograd enabled but n"
+   ],
+   [
+    "TG002",
+    "beginner_source/introyt/captumyt.py",
+    196,
+    "this module runs a forward pass with autograd enabled but ne"
+   ],
+   [
+    "TG002",
+    "intermediate_source/fx_profiling_tutorial.py",
+    33,
+    "this module runs a forward pass with autograd enabled but ne"
+   ],
+   [
+    "TG002",
+    "intermediate_source/scaled_dot_product_attention_tutorial.py",
+    267,
+    "this module runs a forward pass with autograd enabled but ne"
+   ],
+   [
+    "TG002",
+    "intermediate_source/torchvision_tutorial.py",
+    404,
+    "this module runs a forward pass with autograd enabled but ne"
+   ],
+   [
+    "TG004",
+    "beginner_source/basics/quickstart_tutorial.py",
+    65,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/basics/quickstart_tutorial.py",
+    65,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/basics/quickstart_tutorial.py",
+    66,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/basics/quickstart_tutorial.py",
+    66,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/blitz/cifar10_tutorial.py",
+    81,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/blitz/cifar10_tutorial.py",
+    86,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/blitz/data_parallel_tutorial.py",
+    82,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/blitz/data_parallel_tutorial.py",
+    82,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/dcgan_faces_tutorial.py",
+    256,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/fgsm_tutorial.py",
+    175,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/fgsm_tutorial.py",
+    175,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/hyperparameter_tuning_tutorial.py",
+    197,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/hyperparameter_tuning_tutorial.py",
+    200,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/hyperparameter_tuning_tutorial.py",
+    375,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/knowledge_distillation_tutorial.py",
+    92,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/knowledge_distillation_tutorial.py",
+    93,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    327,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    327,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    699,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    699,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    745,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    745,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    952,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    952,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    532,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    532,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    589,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    589,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    592,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    592,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    670,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    670,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    671,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "beginner_source/nn_tutorial.py",
+    671,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "beginner_source/transfer_learning_tutorial.py",
+    95,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/custom_function_conv_bn_tutorial.py",
+    347,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/custom_function_conv_bn_tutorial.py",
+    347,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/custom_function_conv_bn_tutorial.py",
+    348,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/custom_function_conv_bn_tutorial.py",
+    348,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/intermediate_data_loading_tutorial.py",
+    232,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/intermediate_data_loading_tutorial.py",
+    232,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "intermediate_source/intermediate_data_loading_tutorial.py",
+    280,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/intermediate_data_loading_tutorial.py",
+    280,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/intermediate_data_loading_tutorial.py",
+    337,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/seq2seq_translation_tutorial.py",
+    581,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/seq2seq_translation_tutorial.py",
+    581,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/spatial_transformer_tutorial.py",
+    57,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/spatial_transformer_tutorial.py",
+    64,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    387,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    387,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    430,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    430,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    437,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "intermediate_source/torchvision_tutorial.py",
+    437,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "advanced_source/numpy_extensions_tutorial.py",
+    60,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "advanced_source/python_custom_ops_registrations.py",
+    88,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/basics/autogradqs_tutorial.py",
+    33,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/blitz/autograd_tutorial.py",
+    49,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/blitz/neural_networks_tutorial.py",
+    107,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/chatbot_tutorial.py",
+    542,
+    "This training run draws from the `random` module with no see"
+   ],
+   [
+    "TG008",
+    "beginner_source/examples_autograd/polynomial_autograd.py",
+    37,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/introyt/autogradyt_tutorial.py",
+    269,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/introyt/trainingyt.py",
+    173,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    1107,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "beginner_source/nn_tutorial.py",
+    123,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "intermediate_source/autograd_saved_tensors_hooks_tutorial.py",
+    58,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "intermediate_source/char_rnn_classification_tutorial.py",
+    318,
+    "This training run draws from the `random` module with no see"
+   ],
+   [
+    "TG008",
+    "intermediate_source/optimizer_step_in_backward_tutorial.py",
+    48,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "intermediate_source/seq2seq_translation_tutorial.py",
+    280,
+    "This training run draws from the `random` module with no see"
+   ],
+   [
+    "TG008",
+    "intermediate_source/torchrec_intro_tutorial.py",
+    137,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "intermediate_source/visualizing_gradients_tutorial.py",
+    96,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "recipes_source/compiling_optimizer_lr_scheduler.py",
+    29,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "recipes_source/foreach_map.py",
+    49,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "recipes_source/recipes/amp_recipe.py",
+    85,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "recipes_source/recipes/tensorboard_with_pytorch.py",
+    53,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "unstable_source/maskedtensor_overview.py",
+    149,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG013",
+    "beginner_source/knowledge_distillation_tutorial.py",
+    512,
+    "`torch.ones(...)` is built on the host inside this loop and "
+   ],
+   [
+    "TG013",
+    "beginner_source/mosaic_memory_profiling_tutorial.py",
+    1107,
+    "`torch.randint(...)` is built on the host inside this loop a"
+   ]
+  ],
+  "torchtune": [
+   [
+    "TG001",
+    "recipes/dev/early_exit_finetune_distributed.py",
+    909,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/dev/lora_finetune_distributed_multi_dataset.py",
+    819,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/full_finetune_distributed.py",
+    1017,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/lora_finetune_distributed.py",
+    780,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/lora_finetune_single_device.py",
+    641,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/qat_distributed.py",
+    994,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/qat_lora_finetune_distributed.py",
+    754,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "recipes/qat_single_device.py",
+    583,
+    "`running_loss += ...` keeps a graph-attached tensor whose ba"
+   ],
+   [
+    "TG001",
+    "tests/torchtune/modules/test_early_exit_loss.py",
+    123,
+    "`total_loss += ...` keeps a tensor attached to the autograd "
+   ],
+   [
+    "TG004",
+    "recipes/dev/early_exit_finetune_distributed.py",
+    653,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "recipes/dev/early_exit_finetune_distributed.py",
+    653,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "tests/torchtune/training/test_memory.py",
+    126,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG013",
+    "torchtune/dev/rl/workers/postprocessing.py",
+    236,
+    "`self.STOP_TOKENS_TENSOR` does not change inside this loop, "
+   ]
+  ],
+  "transformers-examples": [
+   [
+    "TG004",
+    "3d_parallel_checks.py",
+    297,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "3d_parallel_checks.py",
+    297,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "image-classification/run_image_classification_no_trainer.py",
+    421,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "image-classification/run_image_classification_no_trainer.py",
+    421,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "image-classification/run_image_classification_no_trainer.py",
+    424,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "image-classification/run_image_classification_no_trainer.py",
+    424,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "image-pretraining/run_mim_no_trainer.py",
+    579,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "image-pretraining/run_mim_no_trainer.py",
+    579,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "image-pretraining/run_mim_no_trainer.py",
+    585,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "image-pretraining/run_mim_no_trainer.py",
+    585,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "instance-segmentation/run_instance_segmentation_no_trainer.py",
+    510,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "instance-segmentation/run_instance_segmentation_no_trainer.py",
+    510,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "instance-segmentation/run_instance_segmentation_no_trainer.py",
+    513,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "instance-segmentation/run_instance_segmentation_no_trainer.py",
+    513,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_clm_no_trainer.py",
+    511,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_clm_no_trainer.py",
+    511,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_clm_no_trainer.py",
+    514,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_clm_no_trainer.py",
+    514,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_fim_no_trainer.py",
+    703,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_fim_no_trainer.py",
+    703,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_fim_no_trainer.py",
+    706,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_fim_no_trainer.py",
+    706,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_mlm_no_trainer.py",
+    539,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_mlm_no_trainer.py",
+    539,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_mlm_no_trainer.py",
+    542,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "language-modeling/run_mlm_no_trainer.py",
+    542,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "multiple-choice/run_swag_no_trainer.py",
+    437,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "multiple-choice/run_swag_no_trainer.py",
+    437,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "multiple-choice/run_swag_no_trainer.py",
+    440,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "multiple-choice/run_swag_no_trainer.py",
+    440,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    551,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    551,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    554,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    554,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    557,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "object-detection/run_object_detection_no_trainer.py",
+    557,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    678,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    678,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    683,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    683,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    689,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_beam_search_no_trainer.py",
+    689,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    694,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    694,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    699,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    699,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    705,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "question-answering/run_qa_no_trainer.py",
+    705,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "semantic-segmentation/run_semantic_segmentation_no_trainer.py",
+    374,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "semantic-segmentation/run_semantic_segmentation_no_trainer.py",
+    374,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "semantic-segmentation/run_semantic_segmentation_no_trainer.py",
+    377,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "semantic-segmentation/run_semantic_segmentation_no_trainer.py",
+    377,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "speech-pretraining/run_wav2vec2_pretraining_no_trainer.py",
+    580,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "speech-pretraining/run_wav2vec2_pretraining_no_trainer.py",
+    580,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "speech-pretraining/run_wav2vec2_pretraining_no_trainer.py",
+    586,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "speech-pretraining/run_wav2vec2_pretraining_no_trainer.py",
+    586,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "summarization/run_summarization_no_trainer.py",
+    572,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "summarization/run_summarization_no_trainer.py",
+    572,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "summarization/run_summarization_no_trainer.py",
+    575,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "summarization/run_summarization_no_trainer.py",
+    575,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    451,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    451,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    454,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    454,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    672,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "text-classification/run_glue_no_trainer.py",
+    672,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "token-classification/run_ner_no_trainer.py",
+    562,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "token-classification/run_ner_no_trainer.py",
+    562,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "token-classification/run_ner_no_trainer.py",
+    565,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "token-classification/run_ner_no_trainer.py",
+    565,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "translation/run_translation_no_trainer.py",
+    544,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "translation/run_translation_no_trainer.py",
+    544,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "translation/run_translation_no_trainer.py",
+    547,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "translation/run_translation_no_trainer.py",
+    547,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "context_parallel.py",
+    39,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG013",
+    "continuous_batching.py",
+    46,
+    "`torch.tensor(...)` is built on the host inside this loop an"
+   ]
+  ],
+  "trl": [
+   [
+    "TG004",
+    "trl/experimental/a2po/a2po_trainer.py",
+    222,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/a2po/a2po_trainer.py",
+    222,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/async_distillation/async_distillation_trainer.py",
+    1140,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/async_distillation/async_distillation_trainer.py",
+    1140,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "trl/experimental/async_grpo/async_grpo_trainer.py",
+    1050,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/async_grpo/async_grpo_trainer.py",
+    1050,
+    "DataLoader uses `num_workers=0`: data loading blocks the tra"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    936,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    936,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    1013,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    1013,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    1059,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/bco/bco_trainer.py",
+    1059,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/gold/gold_trainer.py",
+    1196,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/gold/gold_trainer.py",
+    1196,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/iw_opd/iw_opd_trainer.py",
+    804,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/iw_opd/iw_opd_trainer.py",
+    804,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ppo/ppo_trainer.py",
+    533,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ppo/ppo_trainer.py",
+    533,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ppo/ppo_trainer.py",
+    546,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ppo/ppo_trainer.py",
+    546,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/sdft/sdft_trainer.py",
+    587,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/sdft/sdft_trainer.py",
+    587,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/sdpo/sdpo_trainer.py",
+    799,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/sdpo/sdpo_trainer.py",
+    799,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ssd/ssd_trainer.py",
+    302,
+    "DataLoader does not enable `pin_memory`, so host-to-device c"
+   ],
+   [
+    "TG004",
+    "trl/experimental/ssd/ssd_trainer.py",
+    302,
+    "DataLoader does not set `num_workers`, so it defaults to 0 a"
+   ],
+   [
+    "TG008",
+    "tests/experimental/test_server_distillation_trainer.py",
+    236,
+    "This training run draws from torch with no seed set, so it c"
+   ],
+   [
+    "TG008",
+    "trl/experimental/ppo/ppo_trainer.py",
+    803,
+    "This run draws from NumPy without seeding it \u2014 torch is seed"
+   ]
+  ]
+ }
+}

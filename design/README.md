@@ -20,6 +20,11 @@ free/paid boundary, which is itself on the private side of it.
 | — [0001](spikes/0001-meta-device-activation-capture.md) | Measuring activations on a device that allocates nothing | Complete |
 | — [0002](spikes/0002-scanning-real-training-repos.md) | Pointing the tool at real training code | Complete |
 
+Corpus scans live in [`tests/corpus/`](../tests/corpus/): a pinned set of 13 real training
+repositories, scanned and diffed against a committed baseline. Run it after a rule change —
+it is how 22 rule bugs were found that the unit tests could not see, since our fixtures are
+written with the same assumptions as the rules and agree with them by construction.
+
 Measurement scripts live in [`tests/calibration/`](../tests/calibration/), not here — they
 are public tooling, since the calibration numbers are only credible if anyone can
 reproduce them.
