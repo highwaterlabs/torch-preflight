@@ -13,3 +13,6 @@ htmlcov/
 .DS_Store
 *.sarif
 
+
+# corpus scan cache, if someone points it inside the repo
+tests/corpus/.cache/
