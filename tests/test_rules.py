@@ -150,6 +150,86 @@ def test_tg001_quiet_when_a_stacked_container_becomes_the_training_loss():
     ) == []
 
 
+def test_tg001_quiet_for_checkpoint_and_config_plumbing():
+    """Reduced from `karpathy/nanoGPT` and `peft/src/peft/tuners/lora/conversion.py`.
+
+    Assembling a `state_dict` or moving config integers between dicts is startup plumbing,
+    not a training loop. We reported `CRITICAL_OOM` on nanoGPT — the most widely read minimal
+    training script there is — for renaming checkpoint keys.
+
+    Two signals, either sufficient: the container's name says it holds state, or the key is a
+    string. A slot addressed by a parameter name is a mapping being assembled; a per-step
+    accumulator is addressed by an index.
+    """
+    assert "TG001" not in codes(
+        """
+        import torch
+
+        checkpoint = torch.load(ckpt_path, map_location=device)
+        state_dict = checkpoint["model"]
+        for k, v in list(state_dict.items()):
+            if k.startswith("_orig_mod."):
+                state_dict[k[len("_orig_mod."):]] = state_dict.pop(k)
+        loss = criterion(model(x), y)
+        loss.backward()
+        """
+    )
+    assert "TG001" not in codes(
+        """
+        def convert(model, lora_A, lora_B, state_dict, names):
+            for name in names:
+                state_dict[f"{name}.lora_A.weight"] = lora_A
+                state_dict[f"{name}.lora_B.weight"] = lora_B
+        """
+    )
+
+
+def test_tg001_quiet_when_filling_a_preallocated_tensor_buffer():
+    """Reduced from `axolotl/src/axolotl/integrations/diffusion/trainer.py`.
+
+    A tensor buffer is not a container. It has a fixed size, and filling it chunk by chunk
+    is the memory-efficient idiom — this one *becomes* the loss and is backwarded.
+    """
+    assert "TG001" not in codes(
+        """
+        import torch
+
+        def loss_fn(weighted_loss, answer_lengths, masks, n):
+            loss_per_sample = torch.zeros(n, device=weighted_loss.device)
+            for i in range(n):
+                sample_loss = weighted_loss[masks[i]].sum()
+                loss_per_sample[i] = sample_loss / answer_lengths[i].clamp(min=1.0)
+            return loss_per_sample.mean()
+        """
+    )
+
+
+def test_tg001_quiet_inside_a_triton_kernel():
+    """Reduced from `axolotl/src/axolotl/monkeypatch/attention/flash_attn_d512.py`.
+
+    `@triton.jit` functions compile to GPU code and contain no autograd at all — `dv +=
+    tl.dot(...)` in a hand-written flash-attention backward is arithmetic. Three errors in a
+    file that never touches `torch.autograd`.
+    """
+    assert "TG001" not in codes(
+        """
+        import triton
+        import triton.language as tl
+
+        @triton.jit
+        def _bwd_dkdv(Q, K, V, DO, sm_scale, BLOCK_M: tl.constexpr):
+            dv = tl.zeros([16, 16], dtype=tl.float32)
+            dk = tl.zeros([16, 16], dtype=tl.float32)
+            for start_n in range(0, 128, BLOCK_M):
+                p = tl.load(Q + start_n)
+                do = tl.load(DO + start_n)
+                dv += tl.dot(tl.trans(p).to(do.dtype), do)
+                dk += tl.dot(tl.trans(p), do)
+            tl.store(K + start_n, dk)
+        """
+    )
+
+
 def test_tg001_flags_dict_and_self_containers():
     assert "TG001" in codes(
         """
