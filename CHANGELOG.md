@@ -3,6 +3,89 @@
 All notable changes to torch-preflight are recorded here. This project follows
 [semantic versioning](https://semver.org/).
 
+## [0.5.0] — 2026-08-24
+
+Accuracy. 0.4.0 was validated against PyTorch's own source; this release is what happened
+when the tool was pointed at **thirteen repositories whose product is training runs** —
+5,273 files across `pytorch/examples`, `pytorch/tutorials`, `torchtune`, `litgpt`, `trl`,
+`LLaMA-Factory`, `transformers/examples`, `nanoGPT`, `minGPT`, `composer`, `peft`, `OpenRLHF`
+and `axolotl` — and every finding was read by hand.
+
+That found **one** bug worth reporting upstream and **seventeen in these rules**. Errors on
+the two corpora fell from 88 to 16, with no true positive lost.
+
+### ⚠️ Behaviour change
+
+- **Unseeded runs are now a `note` unless the seeding is partial.** Seeding often lives in
+  the launcher or the job scheduler rather than the training script, and some runs
+  deliberately want variance — that is a choice this tool cannot see, so it no longer claims
+  the code is defective. **Partial** seeding — torch seeded, NumPy not — stays a `warning`,
+  because the intent is visible in the code and a generator is escaping anyway. Under
+  `fail_on = "warning"` the first case no longer gates a build.
+- **Builds that failed on a false positive will now pass.** Worth stating plainly rather
+  than filing under "fixed": most of the changes below remove findings.
+
+### Fixed
+
+Grouped by the kind of mistake, because the kinds repeat.
+
+**A name was trusted over the code next to it.**
+- `AutoTokenizer.from_pretrained(...)` and feature extractors counted as models, so
+  `tokenizer(x["question"])` was a forward pass and TG002 reported a missing `no_grad`
+  around *tokenisation*.
+- `DiffusionPipeline.from_pretrained(...)` likewise, so appending the **PIL image** it
+  returns was reported as a retained autograd graph.
+- `accelerator.backward(loss)` seeded `accelerator` itself as a live tensor. Accelerate,
+  Fabric and DeepSpeed engines invert the usual shape — the tensor is the argument.
+- A local helper's `return` is now read before trusting the caller's variable name.
+  `train()` returning `loss.item() / n` hands back a float, whatever the caller calls it.
+
+**The rule did not know what it was about.**
+- **TG007 flagged the exact code its own hint recommends.** Every finding was
+  `correct += (predicted == labels).sum().item()` in a validation loop. Its batch-loop
+  exemption matched iterable *names*, so it missed `dev_iter` and `valloader`; it now
+  requires evidence of per-element iteration.
+- TG013 treated `.to("cpu")` as a redundant upload, and told a checkpointing routine to
+  hoist the `.to(device)` that restores the model afterwards.
+- TG002 reported that a function "never calls `.backward()`" with the call nine lines below,
+  in an adversarial-attack tutorial that backwards through its test loop on purpose.
+
+**Not training code at all.**
+- **Test suites.** `model.eval()` followed by a forward inside a pytest test was reported;
+  the exemption existed but only applied to the function *name*. Now keyed on the module.
+- **Checkpoint plumbing.** `state_dict[f"{name}.lora_A.weight"] = lora_A` and
+  `model_args[k] = checkpoint_model_args[k]` are startup surgery, not a training loop. This
+  is why `nanoGPT/train.py` reported two `CRITICAL_OOM` errors; it now scans clean.
+- **Tensor buffers.** Filling a preallocated `torch.zeros(...)` chunk by chunk is the
+  memory-efficient idiom, not an accumulating container.
+- **Triton kernels.** `@triton.jit` functions contain no autograd; `dv += tl.dot(...)` in a
+  hand-written flash-attention backward is arithmetic.
+
+**Retention a backward pass depends on**, continued from 0.4.0. A holder is exempt when a
+value derived from it is returned, not only when the container itself is — `logps =
+torch.cat(all_logps); return logps` hands the caller a graph the objective backwards.
+
+**Values produced under `torch.no_grad()`** no longer propagate a graph. The standard
+evaluation loop wraps only the forward and uses the result after the block, and the check
+was positional.
+
+### Added
+
+- [`tests/corpus/scan.py`](tests/corpus/scan.py) — thirteen pinned repositories, 3,455
+  files, diffed against a committed baseline. Two guards, both of which caught real bugs
+  while being written: file counts are asserted (a pruned checkout once scanned **0 files**
+  and reported every finding as removed), and the summary always states that removals are
+  ambiguous — a fixed false positive and a silenced true positive look identical.
+- [Spike 0002](design/spikes/0002-scanning-real-training-repos.md), the full write-up.
+
+### Known gaps
+
+Two false-positive causes are understood and deliberately unfixed, each with one finding and
+a filed issue: container element types ([#55](https://github.com/highwaterlabs/torch-preflight/issues/55))
+and the `label` naming heuristic on non-tensors ([#56](https://github.com/highwaterlabs/torch-preflight/issues/56)).
+Neither has a live failing case to verify a fix against, and changing a heuristic with
+nothing observable to check is how a false negative was introduced during this work.
+
 ## [0.4.0] — 2026-08-18
 
 Two rounds of triaging real training code. torch-preflight was run over seven repositories

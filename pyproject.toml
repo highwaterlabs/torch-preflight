@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "torch-preflight"
-version = "0.4.0"
+version = "0.5.0"
 description = "Static analyzer for PyTorch training code: catches VRAM leaks, silent convergence bugs, and GPU pipeline stalls before you pay for the run."
 readme = "README.md"
 requires-python = ">=3.9"

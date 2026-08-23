@@ -8,7 +8,7 @@ from .config import Config, load_config
 from .diagnostics import Category, Diagnostic, Severity
 from .engine import Result, check_paths, check_source
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"
 
 #: Exported lazily so that ``import torch_preflight`` never pulls in torch. ``VRAMGuard`` is a
 #: runtime tool and needs the ``[vram]`` extra; everything else here is dependency-free.
