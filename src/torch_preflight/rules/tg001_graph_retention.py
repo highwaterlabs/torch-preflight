@@ -14,6 +14,23 @@ from .base import Rule, register
 
 ACCUMULATING_METHODS = {"append", "add", "extend", "insert", "put", "push"}
 
+#: Containers that hold checkpoint or configuration state rather than per-iteration values.
+#: `state_dict[f"{name}.lora_A.weight"] = lora_A` is how you *assemble* a checkpoint, and
+#: `model_args[k] = checkpoint_model_args[k]` moves config integers between dicts -- neither
+#: runs per training step. Both were reported as retained graphs, in `peft` and in nanoGPT.
+STATE_CONTAINER_HINTS = (
+    "state_dict", "statedict", "checkpoint", "ckpt", "config", "args", "pattern",
+    "metadata", "kwargs", "params_dict",
+)
+
+#: Factories that allocate a tensor buffer. Writing into one is not accumulation: the buffer
+#: has a fixed size, and filling it chunk by chunk is the memory-efficient idiom -- axolotl
+#: builds `loss_per_sample[i] = ...` exactly this way, then reduces and backwards it.
+TENSOR_FACTORIES = {
+    "zeros", "empty", "ones", "full", "zeros_like", "empty_like", "ones_like",
+    "full_like", "new_zeros", "new_empty", "new_full",
+}
+
 #: A name, keyed to the scope that owns it. ``self.losses`` is instance state and keys to
 #: ``None`` so it matches file-wide; a bare local keys to its enclosing function.
 Key = Tuple[Optional[ScopePath], str]
@@ -85,6 +102,9 @@ when it becomes the training loss, and the two are written identically.
         #: ``target -> names read in whatever was assigned to it``. Reachability runs
         #: backwards along these edges: if a value is needed, so is everything it came from.
         self._flows_from: Dict[Key, Set[Key]] = {}
+        #: Names bound to a tensor buffer from a factory, so a subscript write into one is
+        #: not read as a container growing.
+        self._tensor_buffers: Set[Key] = set()
         self._backward_seeds: Set[Key] = set()
         self._return_seeds: Set[Key] = set()
         #: Bare names handed back, resolved at verdict time. A bare name is evidence only
@@ -94,6 +114,8 @@ when it becomes the training loss, and the two are written identically.
     # ------------------------------------------------------------------ collection
 
     def visit_Call(self, node: cst.Call) -> bool:
+        if self._in_triton_kernel():
+            return True
         # A backward pass reads whatever it is handed. Record that before considering any
         # candidate, since one call can be both -- `losses[i].backward()`.
         if self._is_backward_call(node):
@@ -133,6 +155,8 @@ when it becomes the training loss, and the two are written identically.
         return True
 
     def visit_AugAssign(self, node: cst.AugAssign) -> bool:
+        if self._in_triton_kernel():
+            return True
         target = dotted_name(node.target)
         if target is not None:
             self._note_flow(target, node.value)
@@ -156,6 +180,8 @@ when it becomes the training loss, and the two are written identically.
         return True
 
     def visit_Assign(self, node: cst.Assign) -> bool:
+        if self._in_triton_kernel():
+            return True
         for target in node.targets:
             # ``x = expr`` and ``cache[k] = expr`` both mean the graph of ``expr`` is now
             # reachable through the target, which is what reachability needs to follow.
@@ -166,6 +192,13 @@ when it becomes the training loss, and the two are written identically.
             if name is not None:
                 self._note_flow(name, node.value)
 
+        # A tensor buffer is not a container. Record it before the candidate check below.
+        if isinstance(node.value, cst.Call) and final_attr(node.value.func) in TENSOR_FACTORIES:
+            for target in node.targets:
+                name = dotted_name(target.target)
+                if name is not None:
+                    self._tensor_buffers.add(self._key(name))
+
         if self.in_no_grad or not self.is_grad(node.value):
             return True
 
@@ -174,6 +207,10 @@ when it becomes the training loss, and the two are written identically.
                 continue
             container = dotted_name(target.target.value)
             if container is None or not self._container_accumulates(container):
+                continue
+            if self._is_state_container(container, target.target):
+                continue
+            if self._key(container) in self._tensor_buffers:
                 continue
             self._defer(
                 node.value,
@@ -340,6 +377,42 @@ when it becomes the training loss, and the two are written identically.
         """
         leaf = final_attr(node.func)
         return leaf is not None and "backward" in leaf
+
+    def _is_state_container(self, container: str, subscript: cst.Subscript) -> bool:
+        """Checkpoint or config plumbing rather than a per-iteration accumulator.
+
+        Two signals, either sufficient: the name says so, or the key is a string. A slot
+        addressed by a parameter name (`state_dict[f"{name}.lora_A.weight"]`) is a mapping
+        being assembled; a per-step accumulator is addressed by an index.
+        """
+        leaf = container.rsplit(".", 1)[-1].lower()
+        if any(hint in leaf for hint in STATE_CONTAINER_HINTS):
+            return True
+        for element in subscript.slice:
+            index = getattr(element.slice, "value", None)
+            if isinstance(index, (cst.SimpleString, cst.FormattedString)):
+                return True
+        return False
+
+    def _in_triton_kernel(self) -> bool:
+        """Triton kernels contain no autograd at all.
+
+        `@triton.jit` functions are compiled to GPU code; `dv += tl.dot(...)` in a
+        hand-written flash-attention backward is arithmetic, not graph accumulation.
+        axolotl's `flash_attn_d512.py` produced three errors this way, in a file that
+        never touches `torch.autograd`.
+        """
+        for scope in self.scopes:
+            node = scope.node
+            if not isinstance(node, cst.FunctionDef):
+                continue
+            for decorator in node.decorators:
+                if "triton" in (dotted_name(decorator.decorator) or ""):
+                    return True
+                call = decorator.decorator
+                if isinstance(call, cst.Call) and "triton" in (dotted_name(call.func) or ""):
+                    return True
+        return False
 
     def _container_accumulates(self, container: str) -> bool:
         """True if writes to ``container`` survive past the current loop iteration."""

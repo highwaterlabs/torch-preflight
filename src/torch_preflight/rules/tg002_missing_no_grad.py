@@ -38,6 +38,25 @@ VAL_LOADER_HINTS = ("val", "valid", "test", "eval", "dev", "holdout")
 LOADER_TOKENS = ("loader", "dataset", "batches", "_data", "data_", "iterator")
 
 
+def _is_pytest_module(path: str) -> bool:
+    """Is this file part of a test suite?
+
+    The rule already claims to exempt pytest's ``test_*`` functions, which legitimately
+    exercise autograd — but only through the *name* path. A test that calls ``model.eval()``
+    and then does a forward was still reported, which is 29 of `peft`'s findings and most of
+    `composer`'s.
+
+    Matched on the module rather than the function name because six of those 29 sit in
+    `_check_inference_finite`, a helper that no name-based rule would catch. What makes them
+    exempt is that the file is a test suite, not what the function happens to be called.
+    """
+    parts = path.replace("\\", "/").split("/")
+    if any(part in ("tests", "test", "testing") for part in parts[:-1]):
+        return True
+    name = parts[-1]
+    return name.startswith("test_") or name.endswith(("_test.py", "_tests.py"))
+
+
 def _is_eval_name(name: str) -> bool:
     lowered = name.lower().lstrip("_")
     return lowered in EVAL_NAMES or lowered.startswith(EVAL_PREFIXES)
@@ -155,6 +174,12 @@ Wrap the loop in ``with torch.no_grad():``, or decorate the routine with
     # ------------------------------------------------------------------ verdict
 
     def _finish(self, unit: _Unit) -> None:
+        # A test suite is not a training run. Retaining a graph for a forward that a test
+        # never backwards costs nothing worth reporting, and the rule already promised this
+        # exemption for `test_*` functions -- it just never applied it past the name check.
+        if _is_pytest_module(self.ctx.path):
+            return
+
         # A routine that calls ``.backward()`` is training, not evaluating - unless the
         # forward pass we found sits in an explicit validation loop inside it.
         candidates = [

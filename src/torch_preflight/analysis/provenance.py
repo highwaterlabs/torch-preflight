@@ -48,6 +48,11 @@ MODEL_NAME_HINTS = frozenset(
 NOT_A_MODEL_HINTS = (
     "tokenizer", "featureextractor", "imageprocessor", "processor", "extractor",
     "config", "scheduler",
+    # A diffusers/transformers *pipeline* runs inference and hands back PIL images, strings
+    # or dicts -- not a tensor with a graph. `DiffusionPipeline.from_pretrained(...)` then
+    # `images.append(pipeline(prompt, num_inference_steps=25))` was reported as a retained
+    # autograd graph in six of peft's dreambooth examples.
+    "pipeline",
 )
 
 # Variable names conventionally holding a loss function.
