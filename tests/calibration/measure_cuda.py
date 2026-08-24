@@ -365,6 +365,48 @@ def real_model_case(hub_id, kind, batch, seq, amp_dtype):
 # ------------------------------------------------------------------------------ main
 
 
+def _unsupported_architecture() -> Optional[str]:
+    """Can this PyTorch build actually launch a kernel on this card?
+
+    `torch.cuda.is_available()` returns True for a GPU whose compute capability the build
+    has no kernels for, and the failure then surfaces as `no kernel image is available for
+    execution on the device` from the first real op — a CUDA error several frames away from
+    the cause.
+
+    Found on Kaggle's free P100: torch 2.10+cu128 ships sm_70 upward, and Pascal is sm_60.
+    PyTorch has dropped Pascal, so the free-P100 route that this project's own calibration
+    issue recommended cannot work at all.
+    """
+    try:
+        major, minor = torch.cuda.get_device_capability(0)
+        supported = torch.cuda.get_arch_list()
+    except Exception:  # pragma: no cover - older torch, or a driver that will not answer
+        return None
+
+    architectures = {
+        int(arch[3:].rstrip("a+")) for arch in supported
+        if arch.startswith("sm_") and arch[3:].rstrip("a+").isdigit()
+    }
+    if not architectures:
+        return None
+
+    capability = major * 10 + minor
+    if capability in architectures:
+        return None
+
+    name = torch.cuda.get_device_name(0)
+    return (
+        f"{name} is compute capability sm_{capability}, and this PyTorch build only ships "
+        f"kernels for {', '.join('sm_%d' % a for a in sorted(architectures))}.\n\n"
+        f"No kernel can launch, so there is nothing to measure — every op would fail with\n"
+        f"'no kernel image is available for execution on the device'.\n\n"
+        f"This is not a driver problem and reinstalling torch on the same card will not fix\n"
+        f"it: PyTorch has dropped support for this architecture. Use a newer card.\n\n"
+        f"  Colab   Runtime -> Change runtime type -> L4 (Ada) or A100 (Ampere, Pro)\n"
+        f"  Kaggle  Settings -> Accelerator -> GPU T4 x2 (Turing)"
+    )
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", action="store_true",
@@ -374,6 +416,11 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     if not torch.cuda.is_available():
         print(NO_CUDA_MESSAGE, file=sys.stderr)
+        return 1
+
+    unsupported = _unsupported_architecture()
+    if unsupported is not None:
+        print(unsupported, file=sys.stderr)
         return 1
 
     name = torch.cuda.get_device_name(0)
