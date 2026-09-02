@@ -40,8 +40,12 @@ from .types import (
 #:
 #: MEASURED at 135 MiB on a Tesla T4 (torch 2.11, CUDA 12.8) — 105 MiB after init, rising
 #: to 131 after the first cuBLAS call and 135 after cuDNN. We previously assumed 600 MiB
-#: on no evidence. A single card is a thin basis: larger GPUs plausibly carry a bigger
-#: context, so :attr:`hardware.Gpu.context_mib` overrides this per device as data arrives.
+#: on no evidence. Measured three times now -- the original T4, a Colab T4 on torch 2.11 and
+#: a Kaggle T4 on torch 2.10 -- agreeing at 135 MiB to the byte, with the same 105/131/135
+#: progression through init, cuBLAS and cuDNN. That makes it reproducible across torch
+#: versions, drivers and providers, but every measurement is **Turing**: whether the context
+#: varies by architecture is still open, so :attr:`hardware.Gpu.context_mib` overrides this
+#: per device as data arrives.
 CUDA_CONTEXT_BYTES = 135 * MIB
 
 #: The caching allocator reserves more than it hands out.

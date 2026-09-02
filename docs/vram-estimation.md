@@ -164,9 +164,15 @@ weights term stands and the report tells you the real peak is lower.
   Encoder models, which have no LM head, land within 4%.
 - Entry-point profiling measures the forward pass only, so the transient where a
   checkpointed layer is recomputed during backward is still modelled analytically.
-- Calibration covers one GPU (T4) and four model families. `CUDA_CONTEXT_BYTES` in
-  particular is a single data point; larger cards plausibly differ, and
-  `hardware.Gpu.context_mib` exists to hold per-card numbers as they arrive.
+- Calibration covers one GPU *architecture* (Turing) and four model families.
+  `CUDA_CONTEXT_BYTES` has now been measured three times — the original T4, plus a Colab T4
+  on torch 2.11 and a Kaggle T4 on torch 2.10 — and all three agree at **135 MiB to the
+  byte** (141,426,688), with the same 105 / 131 / 135 MiB progression through init, cuBLAS
+  and cuDNN. So it is reproducible across torch versions, driver stacks and providers.
+  What that does **not** establish is whether it varies by architecture: every measurement
+  is Turing. Larger or newer cards plausibly differ, and `hardware.Gpu.context_mib` exists
+  to hold per-card numbers as they arrive. The free route to a second architecture has
+  narrowed — PyTorch dropped Pascal, so the P100 cannot run at all.
 - Encoder-decoder families beyond T5 and Whisper (BART, Pegasus, MarianMT) have no
   measured coefficients, so they report activations as unknown rather than borrowing
   another family's numbers.

@@ -106,7 +106,16 @@ Per RFC [0001](rfcs/0001-vram-estimator.md). No new **required** dependencies.
 - [ ] **The guard's measurement is forward-only**, so for a language model it sees the
       logits but not the loss temporaries that peak during backward. The static estimator
       models those; the guard does not.
-- [ ] **Calibration covers one GPU** — tracked in [#21](https://github.com/highwaterlabs/torch-preflight/issues/21).
+- [ ] **Calibration covers one GPU architecture** — tracked in [#21](https://github.com/highwaterlabs/torch-preflight/issues/21).
+      Partly answered on 2026-08-24. `CUDA_CONTEXT_BYTES` measured on a Colab T4 (torch 2.11)
+      and a Kaggle T4 (torch 2.10): both **135 MiB to the byte**, matching the original and
+      each other, including the 105/131/135 progression and every fragmentation figure to two
+      decimals. Reproducible across torch versions, drivers and providers — which was worth
+      knowing and was not known.
+      Still one architecture. Every measurement is Turing, so the extrapolation across the
+      other 22 cards in `hardware.py` remains untested. The free route to a second
+      architecture narrowed the same day: PyTorch has dropped Pascal, so the P100 cannot run
+      (#62). Colab's L4 (Ada) or an A100 are what is left.
 - [x] **Encoder-decoder activations measured** for T5 and Whisper (8 snapshot entries),
       so they estimate instead of reporting unknown. A decoder-only formula cannot express
       these: there are two sequence lengths, and a decoder layer carries a third attention
