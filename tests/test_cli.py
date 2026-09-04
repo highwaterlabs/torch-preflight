@@ -142,8 +142,25 @@ def test_explain(capsys):
     assert "autograd graph" in capsys.readouterr().out
 
 
-def test_explain_unknown_rule(capsys):
-    assert main(["explain", "TG999"]) == EXIT_ERROR
+def test_explain_unknown_rule_suggests_closest_code(capsys):
+    assert main(["explain", "TG01"]) == EXIT_ERROR
+    err = capsys.readouterr().err
+    assert "TG010" in err
+    assert "did you mean" in err
+
+
+def test_explain_retired_rule(capsys):
+    assert main(["explain", "TG009"]) == EXIT_OK
+    out = capsys.readouterr().out
+    assert "deliberately not implemented" in out
+    assert "unknown rule" not in out
+
+
+def test_explain_unknown_rule_without_close_match(capsys):
+    assert main(["explain", "ZZZ999"]) == EXIT_ERROR
+    err = capsys.readouterr().err
+    assert "unknown rule" in err
+    assert "torch-preflight rules" in err
 
 
 def test_unknown_code_warns_but_still_runs(tmp_path, capsys):

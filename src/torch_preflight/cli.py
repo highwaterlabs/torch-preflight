@@ -24,6 +24,15 @@ EXIT_OK = 0
 EXIT_FINDINGS = 1
 EXIT_ERROR = 2
 
+RETIRED_RULES = {
+    "TG009": (
+        "TG009 is deliberately not implemented: in-place operations on tensors "
+        "needed for backward already raise a precise error from PyTorch itself, "
+        "naming the tensor and its version counter, so a pre-flight check adds "
+        "nothing useful."
+    ),
+}
+
 SUBCOMMANDS = {"check", "explain", "rules", "estimate", "gpus"}
 
 
@@ -177,16 +186,61 @@ def _print_diff(result) -> None:
 
 
 def _run_explain(code: str) -> int:
-    rule = RULES.get(code.upper())
+    normalized_code = code.upper()
+    rule = RULES.get(normalized_code)
+
     if rule is None:
+        retired_reason = RETIRED_RULES.get(normalized_code)
+        if retired_reason:
+            console = Console()
+            console.print(f"torch-preflight: {retired_reason}")
+            return EXIT_OK
+
+        # Prefer prefix matches first. This handles inputs like TG01,
+        # where the user likely started typing a real rule code.
+        prefix_matches = [
+            rule_code for rule_code in RULES if rule_code.startswith(normalized_code)
+        ]
+
+        if prefix_matches:
+            suggestion = prefix_matches[0]
+        else:
+            # Ask difflib for several candidates, then prefer the
+            # lowest-numbered rule when scores tie. This avoids cases
+            # like TG02 -> TG012 instead of TG002.
+            suggestions = difflib.get_close_matches(normalized_code, RULES, n=3)
+
+            if suggestions:
+                suggestion = min(
+                    suggestions,
+                    key=lambda rule_code: int(rule_code[2:]) if rule_code[2:].isdigit() else float('inf'),
+                )
+            else:
+                suggestion = None
+
         print(f"torch-preflight: unknown rule {code}", file=sys.stderr)
+
+        if suggestion:
+            print(
+                f"help: did you mean {suggestion}? "
+                f"Run `torch-preflight rules` to see all {len(RULES)}.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"help: run `torch-preflight rules` to see all {len(RULES)}.",
+                file=sys.stderr,
+            )
+
         return EXIT_ERROR
 
     console = Console()
     console.print(f"[bold]{rule.code}[/bold]  {rule.summary}")
-    console.print(f"[dim]severity:[/dim] {rule.severity.value}   "
-                  f"[dim]category:[/dim] {rule.category.value}   "
-                  f"[dim]name:[/dim] {rule.name}")
+    console.print(
+        f"[dim]severity:[/dim] {rule.severity.value}   "
+        f"[dim]category:[/dim] {rule.category.value}   "
+        f"[dim]name:[/dim] {rule.name}"
+    )
     console.print()
     console.print(rule.explanation)
     return EXIT_OK
